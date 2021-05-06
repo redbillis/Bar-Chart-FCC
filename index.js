@@ -52,13 +52,48 @@ let generateScales = () => {
 }
 
 let drawBars = () => {
+  let tooltip = d3.select('body')
+                    .append('div')
+                    .attr('id', 'tooltip')
+                    .style('visibility', 'hidden')
+                    .style('width', 'auto')
+                    .style('height', 'auto')
+
   // My chart should have a rect element for each data point with a corresponding class="bar" displaying the data.
+  // Each bar should have the properties data-date and data-gdp containing date and GDP values.
   svg.selectAll('rect')
-      .data(values)
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('width', (width - 2 * padding) / values.length);
+        .data(values)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('width', (width - (2 * padding)) / values.length)
+        .attr('data-date', (item) => {
+            return item[0];  // The bar elements' data-date properties should match the order of the provided data.
+        })
+        .attr('data-gdp', (item) => {
+            return item[1]; // The bar elements' data-gdp properties should match the order of the provided data.
+        })
+        .attr('height', (item) => {
+            return heightScale(item[1]); // Each bar element's height should accurately represent the data's corresponding GDP.
+        })
+        .attr('x', (item, index) => {
+            return xScale(index); // The data-date attribute and its corresponding bar element should align with the corresponding value on the x-axis.
+        })
+        .attr('y', (item) => {
+            return (height - padding) - heightScale(item[1]); // The data-gdp attribute and its corresponding bar element should align with the corresponding value on the y-axis.
+        })
+        .on('mouseover', (item) => {
+          tooltip.transition()
+              .style('visibility', 'visible');
+
+          tooltip.html("Date: " + item[0] + "<br>" + item[1] + "$ Billion");
+
+          document.querySelector('#tooltip').setAttribute('data-date', item[0]);
+      })
+      .on('mouseout', (item) => {
+          tooltip.transition()
+              .style('visibility', 'hidden');
+      })  
 }
 
 let generateAxis = () => {
