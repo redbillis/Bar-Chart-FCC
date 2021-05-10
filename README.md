@@ -1,6 +1,10 @@
-<h1>Building a Survey Form for Earth</h1>
+<h1>Bar Chart</h1>
+
+<h3>Visualizing Data with a Bar Chart for the Data Visualization Certification from FreeCodeCamp</h3>
 
 https://redbillis.github.io/Bar-Chart-FCC/
+
+                                                       <h4>Visualize Data with a Bar ChartPassed</h4>
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/GrZVaM.
 
