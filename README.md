@@ -4,7 +4,7 @@
 
 https://redbillis.github.io/Bar-Chart-FCC/
 
-                                                       <h4>Visualize Data with a Bar ChartPassed</h4>
+<h4>Visualize Data with a Bar ChartPassed</h4>
 
 Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/GrZVaM.
 
